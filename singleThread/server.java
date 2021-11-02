@@ -14,6 +14,7 @@ public class server {
         {
             ServerSocket server = new ServerSocket(8000);
             System.out.println("Server Running...");
+
             Socket SensorServer = new Socket("127.0.0.1",3000);
 
             DataInputStream SensorInput = new DataInputStream(SensorServer.getInputStream());
@@ -22,17 +23,20 @@ public class server {
                 Socket client = server.accept();
                 DataInputStream clientInput = new DataInputStream(client.getInputStream());
                 DataOutputStream clientOutput = new DataOutputStream(client.getOutputStream());
-                          while (true)
+                    while (true)
                     {
                         clientOutput.writeUTF("[App]:Welcome to the navigator app\nWhere do you want to go ?");
                         clientOutput.flush();
+
                         String location =clientInput.readUTF();
                         SensorOutput.writeUTF(location);
                         SensorOutput.flush();
     
                         clientOutput.writeUTF("[App]:What are you Driving? (Bus,Car,Bike)");
                         clientOutput.flush();
+                        
                         String type =clientInput.readUTF();  
+
                         SensorOutput.writeUTF(type);
                         SensorOutput.flush();
     
