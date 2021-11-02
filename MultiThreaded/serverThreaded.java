@@ -21,7 +21,7 @@ class ClinetHandler extends Thread{
         try{
             DataInputStream clientInput = new DataInputStream(client.getInputStream());
             DataOutputStream clientOutput = new DataOutputStream(client.getOutputStream());
-                      while (true)
+                 while (true)
                 {
                     clientOutput.writeUTF("[App]:Welcome to the navigator app\nWhere do you want to go ?");
                     clientOutput.flush();
